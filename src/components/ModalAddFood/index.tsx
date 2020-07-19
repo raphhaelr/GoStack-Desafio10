@@ -6,6 +6,8 @@ import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
+
+
 interface IFoodPlate {
   id: number;
   name: string;
@@ -37,7 +39,19 @@ const ModalAddFood: React.FC<IModalProps> = ({
 
   const handleSubmit = useCallback(
     async (data: ICreateFoodData) => {
-      // TODO ADD A NEW FOOD AND CLOSE THE MODAL
+      const { image, description, name, price } = data
+
+      const formData = {
+        image,
+        description,
+        name,
+        price,
+        available: true
+      }
+
+      handleAddFood(formData)
+
+      setIsOpen()
     },
     [handleAddFood, setIsOpen],
   );
